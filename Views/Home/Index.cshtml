@@ -1,0 +1,103 @@
+﻿@{
+    ViewData["Title"] = "Calculator";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic Calcu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ee82ee;
+        }
+
+        form {
+            display: inline-block;
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        label {
+            font-size: 14px;
+            color: #555;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #ee82ee;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+                background-color: #ee82ee;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculator</h1>
+
+    <form method="post">
+        <label for="num1">Number 1:</label>
+        <input type="number" name="num1" id="num1" required />
+
+        <label for="num2">Number 2:</label>
+        <input type="number" name="num2" id="num2" required />
+
+        <label for="operation">Operation:</label>
+        <select name="operation" id="operation">
+            <option value="Add">Add</option>
+            <option value="Subtract">Subtract</option>
+            <option value="Multiply">Multiply</option>
+            <option value="Divide">Divide</option>
+        </select>
+
+        <button type="submit">Calculate</button>
+    </form>
+
+    @if (ViewBag.Result != null)
+    {
+        <div class="result">@ViewBag.Result</div>
+    }
+    else if (ViewBag.Error != null)
+    {
+        <div class="error">@ViewBag.Error</div>
+    }
+</body>
+</html>
