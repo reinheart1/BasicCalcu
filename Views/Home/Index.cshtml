@@ -5,99 +5,114 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Basic Calcu</title>
+    <title>Basic Calculator</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #8e44ad, #3498db);
+            color: #fff;
             text-align: center;
             padding: 20px;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
         }
 
         h1 {
-            color: #ee82ee;
-        }
-
-        form {
-            display: inline-block;
-            background: #fff;
-            padding: 20px 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: left;
+            font-size: 24px;
+            margin-bottom: 20px;
         }
 
         label {
             font-size: 14px;
-            color: #555;
             display: block;
-            margin-bottom: 8px;
+            margin-top: 10px;
+            text-align: left;
+            color: #ddd;
         }
 
-        input[type="number"], select {
+        input, select {
             width: 100%;
             padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 14px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.8);
+            color: #333;
         }
 
         button {
-            background-color: #ee82ee;
-            color: white;
-            padding: 10px 20px;
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
+            font-size: 18px;
+            background: #2ecc71;
+            color: white;
             cursor: pointer;
-            font-size: 16px;
+            transition: 0.3s;
         }
 
-        button:hover {
-                background-color: #ee82ee;
-        }
+            button:hover {
+                background: #27ae60;
+            }
 
         .result {
             margin-top: 20px;
-            font-size: 18px;
-            color: #4CAF50;
+            font-size: 20px;
             font-weight: bold;
+            color: #ffeb3b;
         }
 
         .error {
-            color: red;
+            color: #ff4d4d;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <h1>Calculator</h1>
+    <div class="container">
+        <h1>Simple Calculator</h1>
 
-    <form method="post">
-        <label for="num1">Number 1:</label>
-        <input type="number" name="num1" id="num1" required />
+        <form method="post">
+            <label for="num1">Number 1:</label>
+            <input type="number" name="num1" id="num1" required />
 
-        <label for="num2">Number 2:</label>
-        <input type="number" name="num2" id="num2" required />
+            <label for="num2">Number 2:</label>
+            <input type="number" name="num2" id="num2" required />
 
-        <label for="operation">Operation:</label>
-        <select name="operation" id="operation">
-            <option value="Add">Add</option>
-            <option value="Subtract">Subtract</option>
-            <option value="Multiply">Multiply</option>
-            <option value="Divide">Divide</option>
-        </select>
+            <label for="operation">Operation:</label>
+            <select name="operation" id="operation">
+                <option value="Add">Addition (+)</option>
+                <option value="Subtract">Subtraction (-)</option>
+                <option value="Multiply">Multiplication (×)</option>
+                <option value="Divide">Division (÷)</option>
+            </select>
 
-        <button type="submit">Calculate</button>
-    </form>
+            <button type="submit">Calculate</button>
+        </form>
 
-    @if (ViewBag.Result != null)
-    {
-        <div class="result">@ViewBag.Result</div>
-    }
-    else if (ViewBag.Error != null)
-    {
-        <div class="error">@ViewBag.Error</div>
-    }
+        @if (ViewBag.Result != null)
+        {
+            <div class="result">Result: @ViewBag.Result</div>
+        }
+        else if (ViewBag.Error != null)
+        {
+            <div class="error">@ViewBag.Error</div>
+        }
+    </div>
 </body>
 </html>
